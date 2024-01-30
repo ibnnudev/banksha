@@ -65,7 +65,9 @@ class SignUpPage extends StatelessWidget {
                 CustomFilledButton(
                   title: 'Continue',
                   height: 50,
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/sign-up-set-profile');
+                  },
                 ),
                 const SizedBox(
                   height: 20,
