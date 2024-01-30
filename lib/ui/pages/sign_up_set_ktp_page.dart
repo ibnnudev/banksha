@@ -75,7 +75,9 @@ class SignUpSetKtpPage extends StatelessWidget {
                 CustomFilledButton(
                   title: 'Continue',
                   height: 50,
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/sign-up-success');
+                  },
                 ),
                 const SizedBox(
                   height: 20,
@@ -83,8 +85,11 @@ class SignUpSetKtpPage extends StatelessWidget {
               ],
             ),
           ),
-          const CustomTextButton(
+          CustomTextButton(
             title: 'Skip for now',
+            onPressed: () {
+              Navigator.pushNamed(context, '/sign-up-success');
+            },
           ),
           const SizedBox(
             height: 81,
