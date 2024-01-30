@@ -1,5 +1,4 @@
 import 'package:banksha/shared/theme.dart';
-import 'package:banksha/ui/pages/sign_in_page.dart';
 import 'package:banksha/ui/widget/buttons.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
@@ -101,7 +100,8 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                           children: [
                             CustomFilledButton(
                               title: 'Get Started',
-                              onPressed: () {},
+                              onPressed: () =>
+                                  Navigator.pushNamed(context, '/sign-up'),
                             ),
                             const SizedBox(
                               height: 20,

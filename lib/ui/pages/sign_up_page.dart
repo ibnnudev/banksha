@@ -3,8 +3,8 @@ import 'package:banksha/ui/widget/buttons.dart';
 import 'package:banksha/ui/widget/forms.dart';
 import 'package:flutter/material.dart';
 
-class SignInPage extends StatelessWidget {
-  const SignInPage({super.key});
+class SignUpPage extends StatelessWidget {
+  const SignUpPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class SignInPage extends StatelessWidget {
           ),
           const SizedBox(height: 100),
           Text(
-            'Sign In &\nGrow Your Finance',
+            'Join Us to Unlock\nYour Growth',
             style: blackTextStyle.copyWith(fontSize: 20, fontWeight: bold),
           ),
           const SizedBox(height: 30),
@@ -44,6 +44,12 @@ class SignInPage extends StatelessWidget {
             child: Column(
               children: [
                 const CustomFormField(
+                  title: 'Full Name',
+                ),
+                const SizedBox(
+                  height: 16,
+                ),
+                const CustomFormField(
                   title: 'Email Address',
                 ),
                 const SizedBox(
@@ -53,19 +59,11 @@ class SignInPage extends StatelessWidget {
                   title: 'Password',
                   obscureText: true,
                 ),
-                const SizedBox(height: 8),
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: Text(
-                    'Forgot Password?',
-                    style: blueTextStyle,
-                  ),
-                ),
                 const SizedBox(
                   height: 30,
                 ),
                 CustomFilledButton(
-                  title: 'Sign In',
+                  title: 'Continue',
                   height: 50,
                   onPressed: () {},
                 ),
@@ -76,7 +74,12 @@ class SignInPage extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 50),
-          CustomTextButton(title: 'Create New Account', onPressed: () {}),
+          CustomTextButton(
+            title: 'Sign In',
+            onPressed: () {
+              Navigator.pushNamed(context, '/sign-in');
+            },
+          ),
           const SizedBox(height: 81),
         ],
       ),
