@@ -1,6 +1,5 @@
 import 'package:banksha/shared/theme.dart';
 import 'package:banksha/ui/widget/buttons.dart';
-import 'package:banksha/ui/widget/forms.dart';
 import 'package:flutter/material.dart';
 
 class SignUpSetKtpPage extends StatelessWidget {

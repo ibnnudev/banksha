@@ -99,18 +99,18 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                       ? Column(
                           children: [
                             CustomFilledButton(
-                              title: 'Get Started',
-                              onPressed: () =>
-                                  Navigator.pushNamed(context, '/sign-up'),
-                            ),
+                                title: 'Get Started',
+                                onPressed: () =>
+                                    Navigator.pushNamedAndRemoveUntil(
+                                        context, '/sign-up', (route) => false)),
                             const SizedBox(
                               height: 20,
                             ),
                             CustomTextButton(
-                              title: 'Sign in',
-                              onPressed: () =>
-                                  Navigator.pushNamed(context, '/sign-in'),
-                            ),
+                                title: 'Sign in',
+                                onPressed: () =>
+                                    Navigator.pushNamedAndRemoveUntil(
+                                        context, '/sign-in', (route) => false)),
                           ],
                         )
                       : Row(
