@@ -1,5 +1,6 @@
 import 'package:banksha/shared/theme.dart';
 import 'package:banksha/ui/pages/sign_in_page.dart';
+import 'package:banksha/ui/widget/buttons.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
@@ -98,45 +99,17 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                   currentIndex == 2
                       ? Column(
                           children: [
-                            SizedBox(
-                              width: double.infinity,
-                              height: 50,
-                              child: TextButton(
-                                onPressed: () => carouselController.nextPage(),
-                                style: TextButton.styleFrom(
-                                  backgroundColor: purpleColor,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(56),
-                                  ),
-                                ),
-                                child: Text(
-                                  'Get Started',
-                                  style: whiteTextStyle.copyWith(
-                                      fontSize: 16, fontWeight: semiBold),
-                                ),
-                              ),
+                            CustomFilledButton(
+                              title: 'Get Started',
+                              onPressed: () {},
                             ),
                             const SizedBox(
                               height: 20,
                             ),
-                            SizedBox(
-                              width: double.infinity,
-                              height: 24,
-                              child: TextButton(
-                                onPressed: () => Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => const SignInPage()),
-                                ),
-                                style: TextButton.styleFrom(
-                                  padding: EdgeInsets.zero,
-                                ),
-                                child: Text(
-                                  'Sign in',
-                                  style: greyTextStyle.copyWith(
-                                      fontSize: 16, fontWeight: regular),
-                                ),
-                              ),
+                            CustomTextButton(
+                              title: 'Sign in',
+                              onPressed: () =>
+                                  Navigator.pushNamed(context, '/sign-in'),
                             ),
                           ],
                         )
@@ -176,23 +149,12 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                               margin: const EdgeInsets.only(right: 10),
                             ),
                             const Spacer(),
-                            SizedBox(
+                            CustomFilledButton(
+                              title: 'Continue',
                               width: 150,
-                              height: 50,
-                              child: TextButton(
-                                onPressed: () => carouselController.nextPage(),
-                                style: TextButton.styleFrom(
-                                  backgroundColor: purpleColor,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(56),
-                                  ),
-                                ),
-                                child: Text(
-                                  'Continue',
-                                  style: whiteTextStyle.copyWith(
-                                      fontSize: 16, fontWeight: semiBold),
-                                ),
-                              ),
+                              onPressed: () {
+                                carouselController.nextPage();
+                              },
                             ),
                           ],
                         )
