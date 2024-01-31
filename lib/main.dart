@@ -1,3 +1,4 @@
+import "package:banksha/shared/theme.dart";
 import "package:banksha/ui/pages/home_page.dart";
 import "package:banksha/ui/pages/onboarding_page.dart";
 import "package:banksha/ui/pages/profile_page.dart";
@@ -17,6 +18,21 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        scaffoldBackgroundColor: lightBackgroundColor,
+        appBarTheme: AppBarTheme(
+          centerTitle: true,
+          elevation: 0,
+          backgroundColor: lightBackgroundColor,
+          iconTheme: const IconThemeData(
+            color: blackColor,
+          ),
+          titleTextStyle: blackTextStyle.copyWith(
+            fontSize: 20,
+            fontWeight: semiBold,
+          ),
+        ),
+      ),
       debugShowCheckedModeBanner: false,
       routes: {
         '/': (context) => const SplashPage(),

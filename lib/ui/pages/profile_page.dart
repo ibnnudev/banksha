@@ -1,4 +1,5 @@
 import 'package:banksha/shared/theme.dart';
+import 'package:banksha/ui/widget/buttons.dart';
 import 'package:banksha/ui/widget/profile_menu_item.dart';
 import 'package:flutter/material.dart';
 
@@ -9,24 +10,17 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
-        elevation: 0,
-        backgroundColor: lightBackgroundColor,
-        iconTheme: const IconThemeData(
-          color: blackColor,
-        ),
-        title: Text(
+        title: const Text(
           'My Profile',
-          style: blackTextStyle.copyWith(
-            fontSize: 20,
-            fontWeight: semiBold,
-          ),
         ),
       ),
       backgroundColor: lightBackgroundColor,
       body: ListView(
         padding: const EdgeInsets.all(24),
         children: [
+          const SizedBox(
+            height: 30,
+          ),
           Container(
             padding: const EdgeInsets.symmetric(
               horizontal: 30,
@@ -41,6 +35,7 @@ class ProfilePage extends StatelessWidget {
                 Container(
                   width: 120,
                   height: 120,
+                  margin: const EdgeInsets.only(bottom: 16),
                   decoration: const BoxDecoration(
                     shape: BoxShape.circle,
                     image: DecorationImage(
@@ -108,12 +103,9 @@ class ProfilePage extends StatelessWidget {
           const SizedBox(
             height: 87,
           ),
-          Text(
-            'Report a Problem',
-            textAlign: TextAlign.center,
-            style: greyTextStyle.copyWith(
-              fontSize: 16,
-            ),
+          CustomTextButton(
+            title: 'Report a Problem',
+            onPressed: () {},
           ),
           const SizedBox(
             height: 50,

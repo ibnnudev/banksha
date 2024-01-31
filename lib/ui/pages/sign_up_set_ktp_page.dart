@@ -9,7 +9,6 @@ class SignUpSetKtpPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-      backgroundColor: lightBackgroundColor,
       body: ListView(
         scrollDirection: Axis.vertical,
         padding: const EdgeInsets.symmetric(
