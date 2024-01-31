@@ -3,14 +3,14 @@ import 'package:banksha/ui/widget/buttons.dart';
 import 'package:banksha/ui/widget/forms.dart';
 import 'package:flutter/material.dart';
 
-class ProfileEditPage extends StatelessWidget {
-  const ProfileEditPage({super.key});
+class ProfileEditPinPage extends StatelessWidget {
+  const ProfileEditPinPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Edit Profile'),
+        title: const Text('Edit PIN'),
       ),
       body: ListView(
         padding: const EdgeInsets.symmetric(horizontal: 24),
@@ -27,26 +27,13 @@ class ProfileEditPage extends StatelessWidget {
             child: Column(
               children: [
                 const CustomFormField(
-                  title: 'Username',
+                  title: 'Old PIN',
                 ),
                 const SizedBox(
                   height: 16,
                 ),
                 const CustomFormField(
-                  title: 'Full Name',
-                ),
-                const SizedBox(
-                  height: 16,
-                ),
-                const CustomFormField(
-                  title: 'Email Address',
-                ),
-                const SizedBox(
-                  height: 16,
-                ),
-                const CustomFormField(
-                  title: 'Password',
-                  obscureText: true,
+                  title: 'New PIN',
                 ),
                 const SizedBox(
                   height: 30,

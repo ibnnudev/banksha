@@ -24,6 +24,7 @@ class CustomFormField extends StatelessWidget {
         ),
         const SizedBox(height: 8),
         TextFormField(
+          style: blackTextStyle,
           obscureText: obscureText,
           controller: controller,
           decoration: InputDecoration(
