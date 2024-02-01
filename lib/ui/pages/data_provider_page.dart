@@ -3,8 +3,8 @@ import 'package:banksha/ui/widget/buttons.dart';
 import 'package:banksha/ui/widget/data_provider_item.dart';
 import 'package:flutter/material.dart';
 
-class DataProgviderPage extends StatelessWidget {
-  const DataProgviderPage({super.key});
+class DataProviderPage extends StatelessWidget {
+  const DataProviderPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -76,19 +76,19 @@ class DataProgviderPage extends StatelessWidget {
           const SizedBox(
             height: 14,
           ),
-          DataProviderItem(
+          const DataProviderItem(
             imageUrl: 'assets/img_telkomsel.png',
             name: 'Telkomsel',
             isAvailable: true,
             isSelected: true,
           ),
-          DataProviderItem(
+          const DataProviderItem(
             imageUrl: 'assets/img_indosat.png',
             name: 'Indosat Ooredoo',
             isAvailable: true,
             isSelected: false,
           ),
-          DataProviderItem(
+          const DataProviderItem(
             imageUrl: 'assets/img_singtel.png',
             name: 'Singtel ID',
             isAvailable: true,
@@ -97,7 +97,12 @@ class DataProgviderPage extends StatelessWidget {
           const SizedBox(
             height: 135,
           ),
-          CustomFilledButton(title: 'Continue'),
+          CustomFilledButton(
+            title: 'Continue',
+            onPressed: () {
+              Navigator.pushNamed(context, '/data-provider-package');
+            },
+          ),
           const SizedBox(
             height: 57,
           ),
