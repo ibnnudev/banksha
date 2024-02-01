@@ -1,6 +1,8 @@
 import 'package:banksha/shared/theme.dart';
 import 'package:banksha/ui/widget/buttons.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class TopUpAmountPage extends StatefulWidget {
   const TopUpAmountPage({super.key});
@@ -12,6 +14,26 @@ class TopUpAmountPage extends StatefulWidget {
 class _TopUpAmountPageState extends State<TopUpAmountPage> {
   final TextEditingController amountController =
       TextEditingController(text: '0');
+
+  @override
+  void initState() {
+    super.initState();
+    amountController.addListener(() {
+      final text = amountController.text;
+      amountController.value = amountController.value.copyWith(
+          text: NumberFormat.currency(
+        locale: 'id',
+        decimalDigits: 0,
+        symbol: '',
+      ).format(
+        int.tryParse(
+              text.replaceAll(RegExp(r'[^0-9]'), ''),
+              radix: 10,
+            ) ??
+            0,
+      ));
+    });
+  }
 
   addAmount(String number) {
     if (amountController.text == '0') {
@@ -194,6 +216,8 @@ class _TopUpAmountPageState extends State<TopUpAmountPage> {
               title: 'Checkout Now',
               onPressed: () async {
                 if (await Navigator.pushNamed(context, '/pin') == true) {
+                  await launchUrl(Uri.parse('https://demo.midtrans.com/'));
+
                   Navigator.pushNamedAndRemoveUntil(
                       context, '/topup-success', (route) => false);
                 }

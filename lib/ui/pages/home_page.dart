@@ -286,15 +286,15 @@ class HomePage extends StatelessWidget {
                   Navigator.pushNamed(context, '/topup');
                 },
               ),
-              HomeServiceItem(
+              const HomeServiceItem(
                 title: 'Send',
                 imageUrl: 'assets/icon_send.png',
               ),
-              HomeServiceItem(
+              const HomeServiceItem(
                 title: 'Withdraw',
                 imageUrl: 'assets/icon_withdraw.png',
               ),
-              HomeServiceItem(
+              const HomeServiceItem(
                 title: 'More',
                 imageUrl: 'assets/icon_more.png',
               ),
