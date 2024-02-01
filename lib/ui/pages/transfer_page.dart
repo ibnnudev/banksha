@@ -1,6 +1,8 @@
 import 'package:banksha/shared/theme.dart';
+import 'package:banksha/ui/widget/buttons.dart';
 import 'package:banksha/ui/widget/forms.dart';
 import 'package:banksha/ui/widget/transfer_recent_user_item.dart';
+import 'package:banksha/ui/widget/transfer_result_user_item.dart';
 import 'package:flutter/material.dart';
 
 class TransferPage extends StatelessWidget {
@@ -36,6 +38,17 @@ class TransferPage extends StatelessWidget {
             isShowTitle: false,
           ),
           buildRecentUser(),
+          buildResult(),
+          const SizedBox(
+            height: 274,
+          ),
+          CustomFilledButton(
+            title: 'Continue',
+            onPressed: () {},
+          ),
+          const SizedBox(
+            height: 50,
+          ),
         ],
       ),
     );
@@ -81,6 +94,43 @@ class TransferPage extends StatelessWidget {
   }
 
   Widget buildResult() {
-    return Container();
+    return Container(
+      margin: const EdgeInsets.only(top: 40),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Result',
+            style: blackTextStyle.copyWith(
+              fontSize: 16,
+              fontWeight: semiBold,
+            ),
+          ),
+          const SizedBox(
+            height: 14,
+          ),
+          const Wrap(
+            spacing: 17,
+            runSpacing: 17,
+            children: [
+              TransferResultUserItem(
+                imageUrl: 'assets/img_friend1.png',
+                name: 'Yonna Jie',
+                username: 'yoenna',
+                isVerified: true,
+                isSelected: true,
+              ),
+              TransferResultUserItem(
+                imageUrl: 'assets/img_friend2.png',
+                name: 'Yonne Ka',
+                username: 'yoenyu',
+                isVerified: false,
+                isSelected: false,
+              ),
+            ],
+          )
+        ],
+      ),
+    );
   }
 }
