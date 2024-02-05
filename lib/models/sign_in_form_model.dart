@@ -1,10 +1,10 @@
 class SignInFormModel {
-  final String email;
-  final String password;
+  final String? email;
+  final String? password;
 
   SignInFormModel({
-    required this.email,
-    required this.password,
+    this.email,
+    this.password,
   });
 
   Map<String, dynamic> toJson() {
