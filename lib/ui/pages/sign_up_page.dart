@@ -3,8 +3,17 @@ import 'package:banksha/ui/widget/buttons.dart';
 import 'package:banksha/ui/widget/forms.dart';
 import 'package:flutter/material.dart';
 
-class SignUpPage extends StatelessWidget {
+class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
+
+  @override
+  State<SignUpPage> createState() => _SignUpPageState();
+}
+
+class _SignUpPageState extends State<SignUpPage> {
+  final nameController = TextEditingController(text: '');
+  final emailController = TextEditingController(text: '');
+  final passwordController = TextEditingController(text: '');
 
   @override
   Widget build(BuildContext context) {
@@ -42,21 +51,24 @@ class SignUpPage extends StatelessWidget {
             padding: const EdgeInsets.all(22),
             child: Column(
               children: [
-                const CustomFormField(
+                CustomFormField(
                   title: 'Full Name',
+                  controller: nameController,
                 ),
                 const SizedBox(
                   height: 16,
                 ),
-                const CustomFormField(
+                CustomFormField(
                   title: 'Email Address',
+                  controller: emailController,
                 ),
                 const SizedBox(
                   height: 16,
                 ),
-                const CustomFormField(
+                CustomFormField(
                   title: 'Password',
                   obscureText: true,
+                  controller: passwordController,
                 ),
                 const SizedBox(
                   height: 30,
