@@ -20,5 +20,6 @@ class AuthRegister extends AuthEvent {
   const AuthRegister(this.data);
 
   @override
+  // TODO: implement props
   List<Object> get props => [data];
 }

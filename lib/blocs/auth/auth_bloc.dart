@@ -1,4 +1,5 @@
 import 'package:banksha/models/sign_up_form_model.dart';
+import 'package:banksha/models/user_model.dart';
 import 'package:banksha/services/auth_service.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
@@ -20,6 +21,18 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           } else {
             emit(const AuthFailed('Email sudah terpakai'));
           }
+        } catch (e) {
+          emit(AuthFailed(e.toString()));
+        }
+      }
+
+      if (event is AuthRegister) {
+        emit(AuthLoading());
+
+        try {
+          final res = await AuthService().register(event.data);
+
+          emit(AuthSuccess(res));
         } catch (e) {
           emit(AuthFailed(e.toString()));
         }
