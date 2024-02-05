@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:banksha/models/sign_in_form_model.dart';
 import 'package:banksha/models/sign_up_form_model.dart';
 import 'package:banksha/models/user_model.dart';
 import 'package:banksha/shared/shared_values.dart';
@@ -26,6 +27,23 @@ class AuthService {
     try {
       final res = await http.post(
         Uri.parse('$baseUrl/register'),
+        body: data.toJson(),
+      );
+
+      if (res.statusCode == 200) {
+        return UserModel.fromJson(jsonDecode(res.body));
+      } else {
+        throw jsonDecode(res.body)['errors'];
+      }
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<UserModel> login(SignInFormModel data) async {
+    try {
+      final res = await http.post(
+        Uri.parse('$baseUrl/login'),
         body: data.toJson(),
       );
 

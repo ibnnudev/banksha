@@ -20,6 +20,13 @@ class AuthRegister extends AuthEvent {
   const AuthRegister(this.data);
 
   @override
-  // TODO: implement props
+  List<Object> get props => [data];
+}
+
+class AuthLogin extends AuthEvent {
+  final SignInFormModel data;
+  const AuthLogin(this.data);
+
+  @override
   List<Object> get props => [data];
 }
