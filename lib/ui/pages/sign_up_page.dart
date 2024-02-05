@@ -1,3 +1,4 @@
+import 'package:banksha/shared/shared_methods.dart';
 import 'package:banksha/shared/theme.dart';
 import 'package:banksha/ui/widget/buttons.dart';
 import 'package:banksha/ui/widget/forms.dart';
@@ -14,6 +15,16 @@ class _SignUpPageState extends State<SignUpPage> {
   final nameController = TextEditingController(text: '');
   final emailController = TextEditingController(text: '');
   final passwordController = TextEditingController(text: '');
+
+  bool validate() {
+    if (nameController.text.isEmpty ||
+        emailController.text.isEmpty ||
+        passwordController.text.isEmpty) {
+      return false;
+    }
+
+    return true;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -77,7 +88,11 @@ class _SignUpPageState extends State<SignUpPage> {
                   title: 'Continue',
                   height: 50,
                   onPressed: () {
-                    Navigator.pushNamed(context, '/sign-up-set-profile');
+                    if (validate()) {
+                      Navigator.pushNamed(context, '/sign-up-set-profile');
+                    } else {
+                      showFlushbar(context, 'Semua field harus diisi');
+                    }
                   },
                 ),
                 const SizedBox(
