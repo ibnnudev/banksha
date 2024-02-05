@@ -1,3 +1,4 @@
+import 'package:banksha/shared/shared_methods.dart';
 import 'package:banksha/shared/theme.dart';
 import 'package:flutter/material.dart';
 
@@ -37,7 +38,7 @@ class PackageItem extends StatelessWidget {
             height: 6,
           ),
           Text(
-            'Rp $price',
+            'Rp ${formatCurrency(price)}',
             style: greyTextStyle.copyWith(
               fontSize: 12,
             ),

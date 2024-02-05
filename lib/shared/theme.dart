@@ -7,6 +7,7 @@ const Color greyColor = Color(0xffA4A8AE);
 const Color purpleColor = Color(0xff5142E6);
 const Color blueColor = Color(0xff53C1F9);
 const Color greenColor = Color(0xff22B07D);
+const Color redColor = Color(0xffFF2566);
 
 const Color lightBackgroundColor = Color(0xffF6F8FB);
 const Color darkBackgroundColor = Color(0xff020518);

@@ -1,3 +1,4 @@
+import 'package:banksha/shared/shared_methods.dart';
 import 'package:banksha/shared/theme.dart';
 import 'package:banksha/ui/widget/home_latest_transaction_item.dart';
 import 'package:banksha/ui/widget/home_service_item.dart';
@@ -207,7 +208,7 @@ class HomePage extends StatelessWidget {
             style: whiteTextStyle,
           ),
           Text(
-            'Rp 12.500',
+            formatCurrency(525000),
             style: whiteTextStyle.copyWith(
               fontSize: 24,
               fontWeight: semiBold,
@@ -240,7 +241,7 @@ class HomePage extends StatelessWidget {
                 style: greenTextStyle.copyWith(fontWeight: semiBold),
               ),
               Text(
-                'of Rp 20.000',
+                'of ${formatCurrency(20000)}',
                 style: blackTextStyle.copyWith(fontWeight: semiBold),
               ),
             ],
@@ -335,37 +336,37 @@ class HomePage extends StatelessWidget {
               color: whiteColor,
               borderRadius: BorderRadius.circular(20),
             ),
-            child: const Column(
+            child: Column(
               children: [
                 HomeLatestTransactionItem(
                   iconUrl: 'assets/icon_transaction_category1.png',
                   title: 'Top Up',
                   time: 'Yesterday',
-                  amount: '+ 450.000',
+                  amount: '+ ${formatCurrency(450000, symbol: '')}',
                 ),
                 HomeLatestTransactionItem(
                   iconUrl: 'assets/icon_transaction_category2.png',
                   title: 'Cashback',
                   time: 'Sep 11',
-                  amount: '+ 22.000',
+                  amount: '+ ${formatCurrency(22000, symbol: '')}',
                 ),
                 HomeLatestTransactionItem(
                   iconUrl: 'assets/icon_transaction_category3.png',
                   title: 'Withdraw',
                   time: 'Sep 2',
-                  amount: '- 5.000',
+                  amount: '- ${formatCurrency(5000, symbol: '')}',
                 ),
                 HomeLatestTransactionItem(
                   iconUrl: 'assets/icon_transaction_category4.png',
                   title: 'Transfer',
                   time: 'Aug 27',
-                  amount: '- 123.500',
+                  amount: '- ${formatCurrency(123500, symbol: '')}',
                 ),
                 HomeLatestTransactionItem(
                   iconUrl: 'assets/icon_transaction_category5.png',
                   title: 'Electric',
                   time: 'Feb 18',
-                  amount: '- 12.300.000',
+                  amount: '- ${formatCurrency(12300000, symbol: '')}',
                 ),
               ],
             ),

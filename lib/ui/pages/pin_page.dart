@@ -1,3 +1,4 @@
+import 'package:banksha/shared/shared_methods.dart';
 import 'package:banksha/shared/theme.dart';
 import 'package:banksha/ui/widget/buttons.dart';
 import 'package:flutter/material.dart';
@@ -19,8 +20,16 @@ class _PinPageState extends State<PinPage> {
       });
     }
 
-    if (pinController.text == '123123') {
-      Navigator.pop(context, true);
+    if (pinController.text.length == 6) {
+      if (pinController.text == '123123') {
+        Navigator.pop(context, true);
+      } else {
+        showFlushbar(
+          context,
+          'PIN yang anda masukkan salah. Silakan coba lagi.',
+        );
+        pinController.text = '';
+      }
     }
   }
 
