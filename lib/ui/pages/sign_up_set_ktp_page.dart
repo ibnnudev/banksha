@@ -149,7 +149,7 @@ class _SignUpSetKtpPageState extends State<SignUpSetKtpPage> {
                                 ),
                               );
                         } else {
-                          showFlushbar(context, 'Gambar tidak boleh ;kosong!');
+                          showFlushbar(context, 'Gambar tidak boleh kosong!');
                         }
                       },
                     ),
