@@ -13,7 +13,6 @@ import "package:banksha/ui/pages/profile_page.dart";
 import "package:banksha/ui/pages/sign_in_page.dart";
 import "package:banksha/ui/pages/sign_up_page.dart";
 import "package:banksha/ui/pages/sign_up_set_ktp_page.dart";
-import 'package:banksha/ui/pages/sign_up_set_profile_page.dart';
 import "package:banksha/ui/pages/sign_up_success_page.dart";
 import "package:banksha/ui/pages/splash_page.dart";
 import "package:banksha/ui/pages/top_up_amount.page.dart";

@@ -2,6 +2,7 @@ import 'package:another_flushbar/flushbar.dart';
 import 'package:banksha/shared/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:image_picker/image_picker.dart';
 
 void showFlushbar(BuildContext context, String message) {
   Flushbar(
@@ -27,4 +28,12 @@ String formatCurrency(
         ) ??
         0,
   );
+}
+
+Future<XFile?> selectImage() async {
+  XFile? selecteedImage = await ImagePicker().pickImage(
+    source: ImageSource.gallery,
+  );
+
+  return selecteedImage;
 }

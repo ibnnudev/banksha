@@ -1,16 +1,30 @@
+import 'dart:io';
+
 import 'package:banksha/models/sign_up_form_model.dart';
+import 'package:banksha/shared/shared_methods.dart';
 import 'package:banksha/shared/theme.dart';
 import 'package:banksha/ui/widget/buttons.dart';
 import 'package:banksha/ui/widget/forms.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
-class SignUpSetProfilePage extends StatelessWidget {
+class SignUpSetProfilePage extends StatefulWidget {
   final SignUpFormModel data;
 
   const SignUpSetProfilePage({
     Key? key,
     required this.data,
   }) : super(key: key);
+
+  @override
+  State<SignUpSetProfilePage> createState() => _SignUpSetProfilePageState();
+}
+
+class _SignUpSetProfilePageState extends State<SignUpSetProfilePage> {
+  final pinController = TextEditingController(text: '');
+
+  // select image
+  XFile? selectedImage;
 
   @override
   Widget build(BuildContext context) {
@@ -48,38 +62,43 @@ class SignUpSetProfilePage extends StatelessWidget {
             padding: const EdgeInsets.all(22),
             child: Column(
               children: [
-                // Container(
-                //   width: 120,
-                //   height: 120,
-                //   decoration: const BoxDecoration(
-                //     shape: BoxShape.circle,
-                //     color: lightBackgroundColor,
-                //   ),
-                //   child: Center(
-                //     child: Image.asset(
-                //       'assets/icon_upload.png',
-                //       width: 32,
-                //       height: 32,
-                //     ),
-                //   ),
-                // ),
-                Container(
-                  width: 120,
-                  height: 120,
-                  decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: lightBackgroundColor,
-                    image: DecorationImage(
-                      fit: BoxFit.cover,
-                      image: AssetImage('assets/img_profile.png'),
+                GestureDetector(
+                  onTap: () async {
+                    final image = await selectImage();
+                    setState(() {
+                      selectedImage = image;
+                    });
+                  },
+                  child: Container(
+                    width: 120,
+                    height: 120,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: lightBackgroundColor,
+                      image: selectedImage == null
+                          ? null
+                          : DecorationImage(
+                              fit: BoxFit.cover,
+                              image: FileImage(
+                                File(selectedImage!.path),
+                              ),
+                            ),
                     ),
+                    child: selectedImage != null
+                        ? null
+                        : Center(
+                            child: Image.asset(
+                              'assets/icon_upload.png',
+                              width: 32,
+                            ),
+                          ),
                   ),
                 ),
                 const SizedBox(
                   height: 16,
                 ),
                 Text(
-                  'Shayna Hanna',
+                  widget.data.name.toString(),
                   style: blackTextStyle.copyWith(
                     fontSize: 16,
                     fontWeight: semiBold,
@@ -87,9 +106,10 @@ class SignUpSetProfilePage extends StatelessWidget {
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 30),
-                const CustomFormField(
+                CustomFormField(
                   title: "Set PIN (6 digit number)",
                   obscureText: true,
+                  controller: pinController,
                 ),
                 const SizedBox(
                   height: 30,
