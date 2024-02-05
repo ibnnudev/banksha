@@ -1,8 +1,10 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:banksha/models/sign_up_form_model.dart';
 import 'package:banksha/shared/shared_methods.dart';
 import 'package:banksha/shared/theme.dart';
+import 'package:banksha/ui/pages/sign_up_set_ktp_page.dart';
 import 'package:banksha/ui/widget/buttons.dart';
 import 'package:banksha/ui/widget/forms.dart';
 import 'package:flutter/material.dart';
@@ -22,9 +24,15 @@ class SignUpSetProfilePage extends StatefulWidget {
 
 class _SignUpSetProfilePageState extends State<SignUpSetProfilePage> {
   final pinController = TextEditingController(text: '');
-
-  // select image
   XFile? selectedImage;
+
+  bool validate() {
+    if (pinController.text.length != 6) {
+      return false;
+    }
+
+    return true;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -110,6 +118,7 @@ class _SignUpSetProfilePageState extends State<SignUpSetProfilePage> {
                   title: "Set PIN (6 digit number)",
                   obscureText: true,
                   controller: pinController,
+                  keyboardType: TextInputType.number,
                 ),
                 const SizedBox(
                   height: 30,
@@ -118,7 +127,26 @@ class _SignUpSetProfilePageState extends State<SignUpSetProfilePage> {
                   title: 'Continue',
                   height: 50,
                   onPressed: () {
-                    Navigator.pushNamed(context, '/sign-up-set-ktp');
+                    if (validate()) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SignUpSetKtpPage(
+                            data: widget.data.copyWith(
+                              pin: pinController.text,
+                              profilePicture: selectedImage == null
+                                  ? null
+                                  : 'data:image/png;base64,${base64Encode(
+                                      File(selectedImage!.path)
+                                          .readAsBytesSync(),
+                                    )}',
+                            ),
+                          ),
+                        ),
+                      );
+                    } else {
+                      showFlushbar(context, 'Pin hanya boleh 6 angka');
+                    }
                   },
                 ),
                 const SizedBox(

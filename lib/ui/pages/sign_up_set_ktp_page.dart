@@ -1,12 +1,37 @@
+import 'dart:io';
+
+import 'package:banksha/models/sign_up_form_model.dart';
+import 'package:banksha/shared/shared_methods.dart';
 import 'package:banksha/shared/theme.dart';
 import 'package:banksha/ui/widget/buttons.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
-class SignUpSetKtpPage extends StatelessWidget {
-  const SignUpSetKtpPage({super.key});
+class SignUpSetKtpPage extends StatefulWidget {
+  final SignUpFormModel data;
+
+  const SignUpSetKtpPage({
+    Key? key,
+    required this.data,
+  }) : super(key: key);
+
+  @override
+  State<SignUpSetKtpPage> createState() => _SignUpSetKtpPageState();
+}
+
+class _SignUpSetKtpPageState extends State<SignUpSetKtpPage> {
+  XFile? selectedImage;
+
+  bool validate() {
+    if (selectedImage == null) {
+      return false;
+    }
+    return true;
+  }
 
   @override
   Widget build(BuildContext context) {
+    print(widget.data);
     return SafeArea(
         child: Scaffold(
       body: ListView(
@@ -41,19 +66,36 @@ class SignUpSetKtpPage extends StatelessWidget {
             padding: const EdgeInsets.all(22),
             child: Column(
               children: [
-                Container(
-                  width: 120,
-                  height: 120,
-                  decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: lightBackgroundColor,
-                  ),
-                  child: Center(
-                    child: Image.asset(
-                      'assets/icon_upload.png',
-                      width: 32,
-                      height: 32,
+                GestureDetector(
+                  onTap: () async {
+                    final image = await selectImage();
+                    setState(() {
+                      selectedImage = image;
+                    });
+                  },
+                  child: Container(
+                    width: 120,
+                    height: 120,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: lightBackgroundColor,
+                      image: selectedImage == null
+                          ? null
+                          : DecorationImage(
+                              fit: BoxFit.cover,
+                              image: FileImage(
+                                File(selectedImage!.path),
+                              ),
+                            ),
                     ),
+                    child: selectedImage != null
+                        ? null
+                        : Center(
+                            child: Image.asset(
+                              'assets/icon_upload.png',
+                              width: 32,
+                            ),
+                          ),
                   ),
                 ),
                 const SizedBox(
@@ -74,7 +116,10 @@ class SignUpSetKtpPage extends StatelessWidget {
                   title: 'Continue',
                   height: 50,
                   onPressed: () {
-                    Navigator.pushNamed(context, '/sign-up-success');
+                    if (validate()) {
+                    } else {
+                      showFlushbar(context, 'Gambar tidak boleh ;kosong!');
+                    }
                   },
                 ),
                 const SizedBox(
